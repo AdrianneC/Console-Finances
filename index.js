@@ -89,9 +89,9 @@ var finances = [
 
 var date = "";
 var pl = 0;
-var change = ""
-
-console.log(finances[1])
+var changeTotal = 0;
+var maxpl = 0;
+var minpl = 0;
 
 // * The total number of months included in the dataset.
 date = finances.length
@@ -101,30 +101,29 @@ for (var i = 0; i < finances.length; i++) {
 pl += finances[i][1];
 }
 
+// * The average of the **changes** in Profit/Losses over the entire period.
+//   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+//   * (`Total/(Number of months - 1)`)
+
+for (var i = 1; i < finances.length; i++) {
+  var currentMonth = finances[i][1];
+  var previousMonth = finances[i-1][1];
+  var change = previousMonth - currentMonth;
+  changeTotal += change;
+}
+
+var averageChange = changeTotal / (finances.length -1)
+
+// * The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+
+// * The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
 // The Console Log
 console.log(
 "Financial Analysis \n" + 
 "------------------------\n" +
-"Total Months: " + date + "\nTotal: $" + pl + "\nAverage Change: $" + change + "\nGreatest Increase in Profits/Losses: $" + change + "\nGreatest Decrease in Profits/Losses: $" + change)
-
-
-// PSUEDOCODE
-
-
-// * The total number of months included in the dataset.
-
-//var date = finances[i][0];
-//var finances = finances[i][0];
-
-
-// * The net total amount of Profit/Losses over the entire period.
-// * The average of the **changes** in Profit/Losses over the entire period.
-//   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-//   * (`Total/(Number of months - 1)`)
-// * The greatest increase in Profit/Losses (date and amount) over the entire period.
-// * The greatest decrease in Profit/Losses (date and amount) over the entire period.
-
+"Total Months: " + date + "\nTotal: $" + pl + "\nAverage Change: $" + averageChange.toFixed(2) + "\nGreatest Increase in Profits/Losses: $" + maxpl + "\nGreatest Decrease in Profits/Losses: $" + minpl)
 
 
 // When you open your code in the browser your resulting analysis should look similar to the following:
@@ -138,12 +137,3 @@ console.log(
 //   Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
 //   Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
 //  ```
-
-// Your final code should print the analysis to the console.
-
-// **Hints:**
-
-// * You will need to do some research on your own for this project!
-// * Remember, in order to combine strings and variables in the console you will need to use **concatenation**.
-// * How do you only print to the nearest 100th in JavaScript?
-// Nested Arrays
