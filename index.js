@@ -90,8 +90,8 @@ var finances = [
 var date = "";
 var pl = 0;
 var changeTotal = 0;
-var maxpl = 0;
-var minpl = 0;
+var change = 0;
+var changeMax = 0;
 
 // * The total number of months included in the dataset.
 date = finances.length
@@ -108,22 +108,19 @@ pl += finances[i][1];
 for (var i = 1; i < finances.length; i++) {
   var currentMonth = finances[i][1];
   var previousMonth = finances[i-1][1];
-  var change = previousMonth - currentMonth;
+  change = currentMonth - previousMonth;
   changeTotal += change;
+  console.log(changeMax)
 }
 
 var averageChange = changeTotal / (finances.length -1)
 
-// * The greatest increase in Profit/Losses (date and amount) over the entire period.
-
-
-// * The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
 // The Console Log
 console.log(
 "Financial Analysis \n" + 
 "------------------------\n" +
-"Total Months: " + date + "\nTotal: $" + pl + "\nAverage Change: $" + averageChange.toFixed(2) + "\nGreatest Increase in Profits/Losses: $" + maxpl + "\nGreatest Decrease in Profits/Losses: $" + minpl)
+"Total Months: " + date + "\nTotal: $" + pl + "\nAverage Change: $" + averageChange.toFixed(2) + "\nGreatest Increase in Profits/Losses: $" + 0 + "\nGreatest Decrease in Profits/Losses: $" + 0)
 
 
 // When you open your code in the browser your resulting analysis should look similar to the following:
