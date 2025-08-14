@@ -18,9 +18,6 @@ N/A
 
 You can use the webpage to read about the analysis of financial records company
 
-## Credits
-
-This web page code was created by Adrianne Cookson as part of the Edx front end web development bootcamp
 
 ## License
 
